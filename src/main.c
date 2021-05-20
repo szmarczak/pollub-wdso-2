@@ -4,6 +4,9 @@
 #include <errno.h>
 #include <string.h>
 
+#include "area.h"
+#include "volume.h"
+
 char* filename;
 
 void help() {
@@ -21,17 +24,19 @@ int main(int argc, char** argv) {
 		help();
 	}
 
-	double result = strtod(argv[1], NULL);
+	double length = strtod(argv[1], NULL);
 
 	if (errno != 0) {
 		printf("%s\n", strerror(errno));
 	}
 
-	if (result <= 0) {
+	if (length <= 0) {
 		help();
 	}
 
-	printf("Given: %f\n", result);
+	printf("Area of square: %f\n", areaOfSquare(length));
+	printf("Area of cube: %f\n", areaOfCube(length));
+	printf("Volume of cube: %f\n", volumeOfCube(length));
 
 	return 0;
 }
