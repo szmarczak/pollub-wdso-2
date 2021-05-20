@@ -1,4 +1,7 @@
 build:
+	# Make sure `lib` directory exists
+	mkdir -p lib
+
 	# Create shared `volume` library
 	gcc -I include -shared src/volume.c -o lib/volume.wdso2.so
 
