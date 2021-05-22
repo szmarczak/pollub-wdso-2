@@ -19,8 +19,12 @@ Volume of cube: 15.625000
 
 ### Installation
 
+Download and unpack https://github.com/szmarczak/pollub-wdso-2/blob/advanced/wdso2-2.0.tar.gz
+
 ```bash
-git clone https://github.com/szmarczak/pollub-wdso-2.git && cd pollub-wdso-2
+cd wdso2-2.0
+./configure
+make
 sudo make install
 ```
 
