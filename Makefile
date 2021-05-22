@@ -1,23 +1,28 @@
-build:
-	# Make sure `lib` directory exists
-	mkdir -p lib
+build/%.o: src/%.c
+	mkdir -p $(dir $@)
+	gcc -I include -c $< -o $@
 
-	# Create shared `volume` library
-	gcc -I include -shared src/volume.c -o lib/libvolume.wdso2.so
+lib/lib%.wdso2.so: build/%.o
+	mkdir -p $(dir $@)
+	gcc -I include -shared $< -o $@
 
-	# Create static `area` library
-	gcc -I include -c src/area.c -o lib/area.o
-	ar rs lib/libarea.wdso2.a lib/area.o
+lib/lib%.wdso2.a: build/%.o
+	mkdir -p $(dir $@)
+	ar rs $@ $<
 
-	# Build the executable
-	gcc -I include -L lib src/main.c -lvolume.wdso2 -larea.wdso2 -o wdso2
+.PHONY: build
+build: build/main.o lib/libvolume.wdso2.so lib/libarea.wdso2.a
+	gcc -I include -L lib $< -lvolume.wdso2 -larea.wdso2 -o wdso2
 
+.PHONY: install
 install: build
 	mv lib/libvolume.wdso2.so /usr/lib
 	mv wdso2 /usr/bin
 
+.PHONY: uninstall
 uninstall:
 	rm -f /usr/lib/libvolume.wdso2.so /usr/bin/wdso2
 
+.PHONY: clean
 clean:
-	rm -f *.o *.a *.so wdso2
+	rm -rf build lib wdso2
