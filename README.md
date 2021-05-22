@@ -6,8 +6,15 @@ This simple `wdso2` program calculates area of square, area of cube and volume o
 
 ```bash
 # wdso2 length
-wdso2 5
-wdso2 2.5
+$ wdso2 5
+Area of square: 25.000000
+Area of cube: 150.000000
+Volume of cube: 125.000000
+
+$ wdso2 2.5
+Area of square: 6.250000
+Area of cube: 37.500000
+Volume of cube: 15.625000
 ```
 
 ### Installation

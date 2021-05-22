@@ -20,7 +20,7 @@ install: build
 	mv wdso2 /usr/bin
 
 .PHONY: uninstall
-uninstall:
+uninstall: clean
 	rm -f /usr/lib/libvolume.wdso2.so /usr/bin/wdso2
 
 .PHONY: clean
