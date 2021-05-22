@@ -1,0 +1,5 @@
+src/volume.lo: src/volume.c /usr/include/stdc-predef.h include/volume.h
+
+/usr/include/stdc-predef.h:
+
+include/volume.h:

@@ -1,0 +1,5 @@
+src/area.lo: src/area.c /usr/include/stdc-predef.h include/area.h
+
+/usr/include/stdc-predef.h:
+
+include/area.h:
